@@ -1,0 +1,24 @@
+extends ../layout.pug
+block content
+  .container
+    h1 Update Customer
+    form(action=`/customer/update/${customer._id}`, method="POST", onsubmit=`return updateConfirm('${customer._id}', event)`, enctype="multipart/form-data")
+      input(type="hidden", name="_method", value="PUT")
+      .form-group
+        label(for="name") Email:
+        input.form-control(type="email", name="email", value=customer.email, required)
+      .form-group
+        label(for="name") Password:
+        input.form-control(type="password", name="password",  value=customer.password, required)
+      .form-group
+        label(for="name") Name:
+        input.form-control(type="text", name="fullName", value=customer.fullName, required)
+      .form-group
+        label(for="image") Image:
+        input.form-control(type="file", name="image", accept="image/*" )
+      if customer.image
+        img(src=`/images/${customer.image}`, style="width: 600px; height: 300px;")
+      else
+        p No image available
+      
+      button.btn.btn-primary(type="submit") Update

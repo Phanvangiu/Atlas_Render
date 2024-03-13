@@ -1,0 +1,36 @@
+extends ../layout.pug
+
+block content
+  .container
+    h1 Customer List
+    a.btn.btn-primary(href="/customer/create") Create New Customer
+    table.table.table-striped
+      thead
+        tr
+          th Id
+          th Name
+          th Image
+          th Email
+          th Phone
+          th Update
+          th Delete
+      tbody
+        if customers !== ""
+          each item in customers
+            tr
+              td= item._id
+              td= item.fullname
+              td
+                if item.image
+                  img(src=`/images/${item.image}`, style="width: 200px; height: 100px;")
+                else
+                  | No image available
+              td= item.email 
+              td= item.phone
+              td
+                a.btn.btn-info(href=`/customer/update/${item._id}`) Update
+              td
+                button.btn.btn-danger(onclick=`deleteConfirm('${item._id}')`) Delete
+        else
+          tr
+            td(colspan=6) No customers available 
