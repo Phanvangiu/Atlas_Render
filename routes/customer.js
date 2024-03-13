@@ -83,7 +83,7 @@ router.post("/update/:id", upload.single("image"), async (req, res, next) => {
       { _id: req.params.id },
       {
         $set: {
-          fullName: fullName,
+          fullname: fullname,
           email: email,
           image: image,
           password: password,
