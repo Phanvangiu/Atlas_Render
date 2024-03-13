@@ -61,7 +61,7 @@ router.get("/update/:id", async (req, res, next) => {
 
 router.post("/update/:id", upload.single("image"), async (req, res, next) => {
   try {
-    const { fullName, email, password, phone } = req.body;
+    const { fullname, email, password, phone } = req.body;
     let image;
     // Kiểm tra xem có file hình mới được tải lên không
     if (req.file) {
